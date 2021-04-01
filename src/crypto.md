@@ -13,7 +13,7 @@ We do not consider broadcast here.
 The remaining primitives are constructed using a combination of various underlying primities.
 The main asymmetric primitives are:
 
-- Elliptic curve \\( \mathbb{G} \\), implemented with [secp256k1], for efficiency and interoperability
+- Elliptic curve \\( \mathbb{G} \\), implemented with secp256k1, for efficiency and interoperability
 - Pairing curve \\( ( \mathbb{G}_1, \mathbb{G}_2, \mathbb{G}_T )\\), implemented with [BLS12-381], for pairing-based primitives
 
 The elliptic curve \\( \mathbb{G} \\) is used for efficiency, for instance to verify block messages.
@@ -30,7 +30,6 @@ Finally, Filecoin use a variety of symmetric primitives and maps to curves:
 - Maps: Standard Hash-to-Curve for BLS12
 
 [cryptographic primitives in Filecoin]: https://spec.filecoin.io/#section-algorithms.crypto
-[secp256k1]: ???
 
 ## Compatibility and integration
 

@@ -96,15 +96,3 @@ For instance, extending the Polkadot Keys to support BLS12 [as planned] and inte
 Beside the underlying curve, PolkaFS would also benefit from standard constructions using the pairing, for instance BLS signatures (for matching choice of groups) and SNARKs.
 
 Finally, PolkaFS would benefit from various other symmetric primitives such as the different hash functions (SHA256) and pseudo-random functions (ChaCha).
-
-### WebAssembly support for FC state transition primitives (incomplete)
-
-A list with existing Rust crates for the proposed primitives.
-The list provide an idea of whether crates are compilable to wasm as-is and the performance penality compared to native execution.
-The list also include our proposal of whether to integrate the primitive directly in the Polkadot core for performance benefits.
-
-| Primitive | Native op/s | Wasm op/s | Core integration
-| --: | --: | --: | --: |
-| SHA256 | x ver/s | y ver/s | Yes |
-| BLS-signatures (verify) | z sig/s | q ver/s | Yes |
-| Schnorrkel | a ver/s | b ver/s | Yes |
