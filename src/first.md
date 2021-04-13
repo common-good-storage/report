@@ -6,7 +6,7 @@ Decentralised storage is an important part of any decentralised network.
 This research report analyses the feasibility of a proposal to implement the Filecoin protocol using the Cumulus framework to provide such solution on the Polkadot network.
 
 The proposed decentralised storage solution, PolkaFS, is a Parachain on the Polkadot network.
-On a high-level, Storage Miners offer storage capacity for a price and they are PolkaFS Parachain Collators.
+On a high-level, Storage Miners offer storage capacity for a price and they are PolkaFS Parachain collators.
 Storage Clients requesting for storage can be any node that can communicate with the PolkaFS Parachain, including separate clients or other Parachains using cross-chain messaging (XCM).
 
 Filecoin is a consensus protocol, a data-storage platform, and a marketplace for storing and retrieving data.
@@ -19,7 +19,7 @@ We explore the first two components in this report as they are areas are technic
 ### Contribution
 
 We present the key differences between the Filecoin protocol and Substrate based Parachain, specifically on consensus mechanism and cryptographic primitives and implementations.
-These findings have led to a solution designed to potentially implement the PolkaFS Storage Network as a Parachain with collator selection and using Polkadot relay chain for finality.
+These findings have led to a solution designed to potentially implement the PolkaFS Storage Network as a Parachain with collator selection and using Polkadot Relay Chain for finality.
 
 ## Overview
 

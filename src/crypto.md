@@ -26,23 +26,40 @@ In particular signatures in Filecoin can be either
 
 Finally, Filecoin use a variety of symmetric primitives and maps to curves:
 
-- Hash: BLAKE2b, SHA256, Poseidon, ChaCha
+- Hash: BLAKE2b, SHA256
 - Maps: Standard Hash-to-Curve for BLS12
 
 [cryptographic primitives in Filecoin]: https://spec.filecoin.io/#section-algorithms.crypto
+[BLS12-381]: https://electriccoin.co/blog/new-snark-curve/
 
-## Compatibility and integration
+## Compatibility and Integration
 
-In Polkadot, collators maintain a full node for the relay chain and the Parachain, and accept transactions from users.
-The transactions are aggregated into Parachain blocks with an associated state transition proof (STF).
-This STF is defined in WebAssembly and registered on-chain, and used by validators to verify the proposed ParaBlock.
+In Polkadot, collators maintain a full node for the Relay Chain and the Parachain, and accept transactions from users.
+The transactions are aggregated into ParaBlocks with an associated state transition proof (STF).
+This STF is defined in WebAssembly and registered on-chain, and used by validators to verify the proposed ParaBlocks.
 
 The Parachain can be efficiently maintained by collators using native integration of the functions related to the Filecoin specification.
 That is, Rust crates for verifying state transition in Filecoin can be directly used by collators.
 For the validators, the primitives need to be compiled into WebAssembly.
 Since the Filecoin state transition can be regarded pure/total, there is no inherent theoretical problems in compiling them to WebAssembly.
 
-### State transition verification
+Below is a list of our view of the main primitives and their status:
+
+| Primitive | Polkadot WASM |
+| --: | --: |
+| BLAKE2b | ✅ |
+| BLS12-381 | ❌ |
+| Groth16 | ❌ |
+| Secp256k1 | ❌ |
+| SHA256 | ❌ |
+
+We note a BLS implementation in Polkadot would benefit parachains by offering the standardized hash-to-curve algorithm too.
+More importantly, providing support for native curve operations rather than black-box use as (aggregatable) signature scheme.
+Native curve operations could immediately support an efficient WASM-based implementation of a customized SNARK implementations based on BLS12, e.g. Groth-16.
+
+[Polkadot support]: https://github.com/polkadot-js/wasm
+
+### State Transition Verification
 
 The main primitives required for a Filecoin STF is integrating [Proof-of-Spacetime] via:
 
@@ -64,6 +81,10 @@ The WindowPoSt consist of a succinct zero-knowledge proof for each data sector e
 [encoded]: https://spec.filecoin.io/#section-algorithms.sdr.encoding
 [replication]: https://spec.filecoin.io/#section-algorithms.sdr.replication
 [hashed]: https://spec.filecoin.io/#section-algorithms.sdr.merkle-proofs
+
+Finally, Filecoin governance specify a set of root key holders controlling a set of notaries using multi-signatures.
+The notaries serve as trusted nodes specifying DataCaps for clients for subsidizing storage.
+The signature schemes used for governance is covered by the above primitives.
 
 ## Summary
 

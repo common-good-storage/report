@@ -105,7 +105,7 @@ This means that over time, the heaviest chain with weights representing storage 
 
 Parachain will be finalised by the Relay Chain.
 
-> Since each ParaBlock needs to build on a Relay Parent (the Relay Chain Block) of the latest Relay Block, it will be difficult to collate multiple ParaBlocks into 1 PoV - i.e. one PoV Block will be one block produced by one block producer.
+> Since each ParaBlock needs to build on the latest Relay Chain block, it will be difficult to collate multiple ParaBlocks into 1 PoV - i.e. one PoV Block will be one block produced by one block producer.
 
 ## Summary
 
